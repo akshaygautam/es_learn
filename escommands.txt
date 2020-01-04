@@ -1,0 +1,45 @@
+------------------ Installing ES ---------------------
+1. Download TAR file run from bin.
+2. Download Docker image using:
+    sudo docker pull docker.elastic.co/elasticsearch/elasticsearch:7.5.1 (or: 6.6.2)
+    sudo docker images
+    sudo docker tag docker.elastic.co/elasticsearch/elasticsearch:7.5.1 local/es:7  [ Just to simplify name ]
+    sudo docker run -d -p 9201:9200 -p 9301:9300 -e "discovery.type=single-node" local/es:7 (or 6)
+
+    visit localhost:9201 notice cluster name.
+
+    go inside container
+    sudo docker exec -it {container_id} bash
+        change container name in config/elasticsearch.yml
+    commit container
+        sudo docker commit {container_id} loacl/es:7.1
+        stop this container
+        and again RUN
+    sudo docker run -d -p 9201:9200 -p 9301:9300 -e "discovery.type=single-node" local/es:7.1
+    visit localhost:9201 notice cluster name.\
+
+------------------ Install kibana ------------------------
+1. Download TAR file run from bin.
+2. Download docker image
+    sudo docker pull docker.elastic.co/kibana/kibana:6.6.2 ( or  7.5.1)
+    sudo docker run -d --link {es_container_id} -p 5062:5061 docker.elastic.co/kibana/kibana:6.6.2
+    verify link by entering container
+    and looking in hosts file
+    visit localhost:5062
+-------------------------------------------------------
+----------------Commands on kibana tools -----------------
+    1. GET /_cluster/health/ [Shows health metrics of cluster]
+    2. GET /_cat/nodes?v [shows all the nodes]
+    3. GET /_cat/indices?v [shows all the indices]
+    4. GET /_search
+        {
+            "query":{
+                "match_all":{}
+            }
+        }
+    5. PUT /pages
+        GET /_cluster/health/ 
+        GET /_cat/indices?v
+        ( check status turns to yellow because only single node is created and replica is waiting to be placed on different node which is not present yet)
+    6. GET /_cat/shards?v [shows details of all the shards]
+
