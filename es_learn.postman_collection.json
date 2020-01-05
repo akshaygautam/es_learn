@@ -1,0 +1,834 @@
+{
+	"info": {
+		"_postman_id": "da9f0a40-33c8-4983-b17a-5d1d99230a15",
+		"name": "es_learn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Basic search to get all data",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match_all\": {}\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/_search",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cluster health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9202/_cluster/health",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"_cluster",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view nodes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9202/_cat/nodes?v",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"_cat",
+						"nodes"
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view indices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9202/_cat/indices?v",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"_cat",
+						"indices"
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add page",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9202/pages",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"pages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete page",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9202/pages",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"pages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add indices product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9202/products",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add first product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\":\"prog postman 1\",\n  \"price\": 678,\n  \"in_stock\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_doc",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_doc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add product by id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\":\"prog 100\",\n  \"price\": 678,\n  \"in_stock\": true,\n  \"in_stock_val\":10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_doc/100",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_doc",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9202/products/_doc/100",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_doc",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"doc\":{\n  \t\"in_stock_val\": 30,\n  \t\"tags\":[\"books\",\"tech books\"]\n  }\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_update/100",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_update",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product with script",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n  \"script\":{\n  \t\"source\":\"ctx._source.in_stock_val = 100\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_update/100",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_update",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product with script 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n  \"script\":{\n  \t\"source\":\"ctx._source.in_stock_val -= 4\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_update/100",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_update",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update products  script 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n  \"script\":{\n  \t\"source\":\"ctx._source.in_stock_val -= params.quantity\",\n  \t\"params\":{\n  \t\t\"quantity\":4\n  \t}\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_update/100",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_update",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upsert product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n  \"script\":{\n  \t\"source\":\"ctx._source.in_stock_val=7\"\n  },\n  \"upsert\":{\n  \t\"name\":\"mi 4i\",\n  \t\"price\":1299,\n  \t\"in_stock\":true,\n  \t\"in_stock_val\":20\n  }\n  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_update/101",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_update",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product by id 101",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9202/products/_doc/101",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_doc",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product by id 101",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9202/products/_doc/101",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_doc",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Optimistic concurrency",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n\t\"doc\":{\n\t\t\"in_stock_val\":999\n\t} \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_update/100?if_primary_term=1&if_seq_no=7",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_update",
+						"100"
+					],
+					"query": [
+						{
+							"key": "if_primary_term",
+							"value": "1"
+						},
+						{
+							"key": "if_seq_no",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete by query",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\":{\n\t\t\"match_all\":{}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_delete_by_query",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_delete_by_query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update by query",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"script\":{\n\t\t\"source\":\"ctx._source.in_stock_val--\"\n\t},\n\t\"query\":{\n\t\t\"match_all\":{}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_update_by_query",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_update_by_query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update by query proceed not abort on conflict",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"conflicts\":\"proceed\",\n\t\"script\":{\n\t\t\"source\":\"ctx._source.in_stock_val--\"\n\t},\n\t\"query\":{\n\t\t\"match_all\":{}\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_update_by_query",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_update_by_query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk op",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-ndjson",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"index\":{\"_index\":\"products\",\"_id\":200}}\n{\"name\":\"motorola g4\", \"price\":14000,\"in_stock\":true,\"in_stock_val\":100}\n{\"create\":{\"_index\":\"products\",\"_id\":201}}\n{\"name\":\"nokia lumia\", \"price\":9000,\"in_stock\":true,\"in_stock_val\":30}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/_bulk",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"_bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk op 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-ndjson",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"index\":{\"_id\":200}}\\n\n{\"doc\":{\"price\":1400}}\\n\n{\"delete\":{\"_id\":201}}\\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_bulk",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk with file upload",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/D:/torrent/[FreeTutorials.Us] Udemy - Complete Guide to Elasticsearch/3. Managing Documents/17.1 products-bulk.json.json"
+					},
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9202/products/_bulk",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"109"
+					],
+					"port": "9202",
+					"path": [
+						"products",
+						"_bulk"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
